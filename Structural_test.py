@@ -53,9 +53,9 @@ def main():
     # --- Save output CSV ---
     out_path = "structural_feature_importance_zscore.csv"
     merged.to_csv(out_path, index=False)
-    print(f"💾 Saved: {out_path}\n")
+    print(f" Saved: {out_path}\n")
 
-    print("📊 Preview (Z-score normalized importances):")
+    print(" Preview (Z-score normalized importances):")
     print(merged[["Feature", "Importance_RF_Z", "Importance_LR_Z"]].to_string(index=False))
 
     # --- Visualization ---
@@ -84,10 +84,11 @@ def main():
     )
 
     fig.write_html("structural_equivalence_zscore_bar.html")
-    print("💾 Saved: structural_equivalence_zscore_bar.html\n")
+    print(" Saved: structural_equivalence_zscore_bar.html\n")
 
-    print("✅ Structural equivalence (Z-score) visualization completed successfully!")
+    print(" Structural equivalence (Z-score) visualization completed successfully!")
 
 
 if __name__ == "__main__":
     main()
+
