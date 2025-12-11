@@ -20,17 +20,17 @@ python f1_predictor_logistic.py
 
 Performance equivalence:
 ```
-python performance_equivalence_test.py
+python performance_equivalence.py
 ```
 
 Behavioral equivalence:
 ```
-python behavioral_equivalence_test.py
+python behavioral_test.py
 ```
 
 Structural equivalence:
 ```
-python structural_equivalence_test.py
+python structural_test.py
 ```
 
 ## 📊 Key Results
