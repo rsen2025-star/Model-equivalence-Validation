@@ -51,9 +51,9 @@ python structural_equivalence_test.py
 f1_predictor.py
 f1_predictor_logistic.py
 data_loader.py
-performance_equivalence_test.py
-behavioral_equivalence_test.py
-structural_equivalence_test.py
+performance_equivalence.py
+behavioral_test.py
+structural_test.py
 ```
 
 
