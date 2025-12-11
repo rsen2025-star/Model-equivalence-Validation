@@ -95,7 +95,7 @@ def build_rank_tables():
 # PART 2 — Spearman Rank Correlation Analysis
 # -------------------------------
 def compute_rank_correlations(df: pd.DataFrame):
-    print("\n📊 Part 2 — Spearman Rank Correlation Analysis\n")
+    print("\n Part 2 — Spearman Rank Correlation Analysis\n")
 
     pairs = [
         ("RF vs LR", "Rank_RF", "Rank_LR"),
@@ -111,7 +111,7 @@ def compute_rank_correlations(df: pd.DataFrame):
 
     summary = pd.DataFrame(results)
     summary.to_csv("rank_correlation_summary.csv", index=False)
-    print("\n💾 Saved: rank_correlation_summary.csv")
+    print("\n Saved: rank_correlation_summary.csv")
 
    
 
@@ -139,7 +139,7 @@ def compute_rank_correlations(df: pd.DataFrame):
     )
 
     fig.write_html("rank_correlation_plot.html")
-    print("💾 Saved: rank_correlation_plot.html (with distinct colors)")
+    print(" Saved: rank_correlation_plot.html (with distinct colors)")
 
     return summary
 
@@ -148,14 +148,14 @@ def compute_rank_correlations(df: pd.DataFrame):
 # PART 3 — Rank Deviation & Visualization
 # -------------------------------
 def visualize_rank_behavior(df: pd.DataFrame):
-    print("\n📈 Part 3 — Rank Deviation and Visual Analysis\n")
+    print("\n Part 3 — Rank Deviation and Visual Analysis\n")
 
     df["Δ_RF"] = df["Rank_RF"] - df["Rank_REAL"]
     df["Δ_LR"] = df["Rank_LR"] - df["Rank_REAL"]
     df = df.sort_values("Rank_REAL").reset_index(drop=True)
 
     df[["Driver", "Rank_REAL", "Rank_RF", "Rank_LR", "Δ_RF", "Δ_LR"]].to_csv("rank_shift_table.csv", index=False)
-    print("💾 Saved: rank_shift_table.csv")
+    print(" Saved: rank_shift_table.csv")
 
     # --- Scatter Plot RF vs LR ---
     fig1 = px.scatter(
@@ -167,7 +167,7 @@ def visualize_rank_behavior(df: pd.DataFrame):
     fig1.update_traces(textposition="top center")
     fig1.update_layout(height=600, yaxis_autorange="reversed", xaxis_autorange="reversed")
     fig1.write_html("rank_alignment_plot.html")
-    print("💾 Saved: rank_alignment_plot.html")
+    print(" Saved: rank_alignment_plot.html")
 
     # --- Heatmap (RF/LR/REAL) ---
     z = df[["Rank_REAL", "Rank_RF", "Rank_LR"]].corr(method="spearman").values
@@ -179,14 +179,14 @@ def visualize_rank_behavior(df: pd.DataFrame):
     )
     fig2.update_layout(title_text="Spearman Rank Correlation Heatmap", height=600)
     fig2.write_html("rank_heatmap.html")
-    print("💾 Saved: rank_heatmap.html")
+    print(" Saved: rank_heatmap.html")
 
     # --- Top 5 Alignment Overview ---
     top_real = df.nsmallest(5, "Rank_REAL")[["Driver", "Rank_REAL"]]
     top_rf = df.nsmallest(5, "Rank_RF")[["Driver", "Rank_RF"]]
     top_lr = df.nsmallest(5, "Rank_LR")[["Driver", "Rank_LR"]]
 
-    print("\n🏆 Top-5 Drivers Alignment:")
+    print("\n Top-5 Drivers Alignment:")
     print("\nReal Top 5:\n", top_real.to_string(index=False))
     print("\nRF Top 5:\n", top_rf.to_string(index=False))
     print("\nLR Top 5:\n", top_lr.to_string(index=False))
@@ -199,7 +199,8 @@ def main():
     aligned_df = build_rank_tables()
     compute_rank_correlations(aligned_df)
     visualize_rank_behavior(aligned_df)
-    print("\n✅ Behavioral Equivalence Analysis Completed.\n")
+    print("\n Behavioral Equivalence Analysis Completed.\n")
 
 if __name__ == "__main__":
     main()
+
